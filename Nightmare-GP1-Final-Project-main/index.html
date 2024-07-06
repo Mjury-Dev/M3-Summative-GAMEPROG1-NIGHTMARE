@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nightmare</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000; /* Black background */
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+    <script src="/plugins/phaser.min.js"></script>
+    <script type="module" src="/scenes/MainMenu.js"></script>
+    <script type="module" src="/scenes/GameScene.js"></script>
+    <script type="module" src="/scenes/CreditsScene.js"></script>
+    <script type="module" src="/scenes/HowToPlayScene.js"></script>
+    <script type="module" src="/scenes/FinalCutscene.js"></script>
+</head>
+<body>
+    <script type="module">
+        import { MainMenu } from './scenes/MainMenu.js';
+        import { GameScene } from './scenes/GameScene.js';
+        import { CreditsScene } from './scenes/CreditsScene.js'; 
+        import { HowToPlayScene } from './scenes/HowToPlayScene.js';
+        import { FinalCutscene } from './scenes/FinalCutscene.js';
+
+        window.addEventListener('load', () => {
+            const config = {
+                type: Phaser.AUTO,
+                width: 600, 
+                height: 600, 
+                scene: [MainMenu, GameScene, CreditsScene, HowToPlayScene, FinalCutscene], 
+                physics: {
+                    default: "arcade",
+                    arcade: {
+                        debug: true
+                    }
+                }
+            };
+
+            const game = new Phaser.Game(config);
+        });
+    </script>
+</body>
+</html>
